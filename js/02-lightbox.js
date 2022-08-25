@@ -1,4 +1,41 @@
 import { galleryItems } from './gallery-items.js';
-// Change code below this line
 
 console.log(galleryItems);
+
+ 
+
+
+const galleryParent = document.querySelector('.gallery')
+
+
+
+function galleryMarkupCreator(picsArray) {
+    const markupItself = picsArray.map(({preview, original, description}) => {
+        return `
+        <a class="gallery__item" href="${original}">
+  <img class="gallery__image" src="${preview}" alt="Image ${description}" />
+</a>
+       `
+    }
+    )
+    
+    return markupItself.join('');
+}
+
+const markup = galleryMarkupCreator(galleryItems)
+
+console.log(markup)
+
+galleryParent.insertAdjacentHTML('beforeend', markup);
+    
+
+
+ (function() {
+        const gallery = new SimpleLightbox('.gallery a', {captionsData:'alt', captionDelay:250});
+    })();
+
+
+
+
+
+
