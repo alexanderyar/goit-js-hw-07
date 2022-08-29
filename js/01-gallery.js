@@ -58,15 +58,17 @@ galleryParent.insertAdjacentHTML('beforeend', markup);
 
 
 
+
 const linkEl = document.querySelectorAll('.gallery__link');
 //  console.log(linkEl)
 
-linkEl.forEach(link => { link.addEventListener('click', onLinkClick) })
+// linkEl.forEach(link => { link.addEventListener('click', onLinkClick) })
 
-function onLinkClick(e) {
-    e.preventDefault()
+// function onLinkClick(e) {
+//     e.preventDefault()
 
-}
+// }
+
 
 
     // linkEl.addEventListener('click', (e) => {return "abc"})
@@ -83,6 +85,8 @@ galleryParent.addEventListener('click', onClick)
 
 function onClick(evt) {
 
+     evt.preventDefault()
+
 // console.log(evt.target)
 //     if (evt.target.classList.contains('gallery__link')) {
 //     evt.preventDefault()
@@ -98,7 +102,7 @@ function onClick(evt) {
     }
     
     // console.log(evt.target.dataset.source)
-
+     window.addEventListener('keydown', onKeydown)
     const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" class="gallery__image">
 `)
@@ -106,13 +110,15 @@ function onClick(evt) {
 
 
 
-    window.addEventListener('keydown', onKeydown)
+   
     
     function onKeydown(evt) {
         if (evt.code === 'Escape') {
+             window.removeEventListener('keydown', onKeydown)
             instance.close()
+           
         }
-    
+    console.log(evt) 
   
     }
 

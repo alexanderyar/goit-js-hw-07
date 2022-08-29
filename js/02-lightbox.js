@@ -12,9 +12,9 @@ const galleryParent = document.querySelector('.gallery')
 function galleryMarkupCreator(picsArray) {
     const markupItself = picsArray.map(({preview, original, description}) => {
         return `
-        <a class="gallery__item" href="${original}">
+        <li><a class="gallery__item" href="${original}">
   <img class="gallery__image" src="${preview}" alt="Image ${description}" />
-</a>
+</a></li>
        `
     }
     )
@@ -30,9 +30,9 @@ galleryParent.insertAdjacentHTML('beforeend', markup);
     
 
 
- (function() {
+//  (function() {
         const gallery = new SimpleLightbox('.gallery a', {captionsData:'alt', captionDelay:250});
-    })();
+    // })();
 
 
 
